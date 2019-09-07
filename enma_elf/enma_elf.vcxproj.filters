@@ -16,6 +16,18 @@
     <Filter Include="Исходные файлы\elf_image">
       <UniqueIdentifier>{06d28c27-038a-4fcc-9ee9-6e36b263e6af}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Исходные файлы\elf_image\elf_segment">
+      <UniqueIdentifier>{b0cf5380-1f8a-490d-bd56-909215f752ee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\elf_io">
+      <UniqueIdentifier>{651c9ad5-fd7e-4244-bee7-fab07ecb51e2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\elf_io\elf_image_io">
+      <UniqueIdentifier>{920a7565-a310-4691-b32c-a9942bc542a2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\elf_io\elf_segment_io">
+      <UniqueIdentifier>{4e9c5c21-b05d-41b1-9a6c-a8497d811d6e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -30,6 +42,18 @@
     <ClInclude Include="elf_image.h">
       <Filter>Исходные файлы\elf_image</Filter>
     </ClInclude>
+    <ClInclude Include="enma_elf_properties.h">
+      <Filter>Исходные файлы</Filter>
+    </ClInclude>
+    <ClInclude Include="elf_segment.h">
+      <Filter>Исходные файлы\elf_image\elf_segment</Filter>
+    </ClInclude>
+    <ClInclude Include="elf_image_io.h">
+      <Filter>Исходные файлы\elf_io\elf_image_io</Filter>
+    </ClInclude>
+    <ClInclude Include="elf_segment_io.h">
+      <Filter>Исходные файлы\elf_io\elf_segment_io</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -37,6 +61,15 @@
     </ClCompile>
     <ClCompile Include="elf_image.cpp">
       <Filter>Исходные файлы\elf_image</Filter>
+    </ClCompile>
+    <ClCompile Include="elf_segment.cpp">
+      <Filter>Исходные файлы\elf_image\elf_segment</Filter>
+    </ClCompile>
+    <ClCompile Include="elf_image_io.cpp">
+      <Filter>Исходные файлы\elf_io\elf_image_io</Filter>
+    </ClCompile>
+    <ClCompile Include="elf_segment_io.cpp">
+      <Filter>Исходные файлы\elf_io\elf_segment_io</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

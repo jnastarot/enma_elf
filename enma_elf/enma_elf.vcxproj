@@ -123,6 +123,7 @@
       <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -142,6 +143,7 @@
       <PreprocessorDefinitions>NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -152,12 +154,19 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="elf_image.h" />
+    <ClInclude Include="elf_image_io.h" />
+    <ClInclude Include="elf_segment.h" />
+    <ClInclude Include="elf_segment_io.h" />
     <ClInclude Include="enma_elf.h" />
     <ClInclude Include="enma_elf_internal.h" />
+    <ClInclude Include="enma_elf_properties.h" />
     <ClInclude Include="pch.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="elf_image.cpp" />
+    <ClCompile Include="elf_image_io.cpp" />
+    <ClCompile Include="elf_segment.cpp" />
+    <ClCompile Include="elf_segment_io.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
