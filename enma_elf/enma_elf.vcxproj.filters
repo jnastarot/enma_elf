@@ -28,6 +28,24 @@
     <Filter Include="Исходные файлы\elf_io\elf_segment_io">
       <UniqueIdentifier>{4e9c5c21-b05d-41b1-9a6c-a8497d811d6e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Исходные файлы\elf_helpers">
+      <UniqueIdentifier>{802562a5-7937-407c-96d6-4fc0653ae892}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\elf_image\elf_section">
+      <UniqueIdentifier>{b5f50b11-0ae0-44f8-a4b6-160db3ac335c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\elf_image\elf_tables">
+      <UniqueIdentifier>{7c4061ee-da3c-4092-a45e-7446cbfd6e3d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\elf_image\elf_tables\elf_relocations">
+      <UniqueIdentifier>{d90548a9-82cf-4f41-b764-6252fe55d6da}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\elf_image\elf_tables\elf_strings">
+      <UniqueIdentifier>{874106da-ad68-4aa1-8660-d3cbaaed9f4f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\elf_image\elf_tables\elf_dynamic">
+      <UniqueIdentifier>{b148f322-45b9-4f78-840f-439aab227e33}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -54,6 +72,21 @@
     <ClInclude Include="elf_segment_io.h">
       <Filter>Исходные файлы\elf_io\elf_segment_io</Filter>
     </ClInclude>
+    <ClInclude Include="elf_helpers.h">
+      <Filter>Исходные файлы\elf_helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="elf_section.h">
+      <Filter>Исходные файлы\elf_image\elf_section</Filter>
+    </ClInclude>
+    <ClInclude Include="elf_relocations.h">
+      <Filter>Исходные файлы\elf_image\elf_tables\elf_relocations</Filter>
+    </ClInclude>
+    <ClInclude Include="elf_dynamics.h">
+      <Filter>Исходные файлы\elf_image\elf_tables\elf_dynamic</Filter>
+    </ClInclude>
+    <ClInclude Include="elf_strings.h">
+      <Filter>Исходные файлы\elf_image\elf_tables\elf_strings</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -70,6 +103,21 @@
     </ClCompile>
     <ClCompile Include="elf_segment_io.cpp">
       <Filter>Исходные файлы\elf_io\elf_segment_io</Filter>
+    </ClCompile>
+    <ClCompile Include="elf_helpers.cpp">
+      <Filter>Исходные файлы\elf_helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="elf_section.cpp">
+      <Filter>Исходные файлы\elf_image\elf_section</Filter>
+    </ClCompile>
+    <ClCompile Include="elf_relocations.cpp">
+      <Filter>Исходные файлы\elf_image\elf_tables\elf_relocations</Filter>
+    </ClCompile>
+    <ClCompile Include="elf_dynamics.cpp">
+      <Filter>Исходные файлы\elf_image\elf_tables\elf_dynamic</Filter>
+    </ClCompile>
+    <ClCompile Include="elf_strings.cpp">
+      <Filter>Исходные файлы\elf_image\elf_tables\elf_strings</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

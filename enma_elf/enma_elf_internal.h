@@ -5,7 +5,7 @@
 
 typedef struct {
 
-    unsigned char    e_ident[EI_NIDENT];      /* Magic number and other info */
+    unsigned char   e_ident[EI_NIDENT];       /* Magic number and other info */
     uint16_t        e_type;                   /* Object file type */
     uint16_t        e_machine;                /* Architecture */
     uint32_t        e_version;                /* Object file version */
@@ -54,16 +54,19 @@ typedef struct {
    /* Conglomeration of the identification bytes, for easy testing as a word.  */
 #define ELFMAG         "\177ELF"
 #define SELFMAG        4
+
 #define EI_CLASS       4                /* File class byte index */
 #define ELFCLASSNONE   0                /* Invalid class */
 #define ELFCLASS32     1                /* 32-bit objects */
 #define ELFCLASS64     2                /* 64-bit objects */
 #define ELFCLASSNUM    3
+
 #define EI_DATA        5                /* Data encoding byte index */
 #define ELFDATANONE    0                /* Invalid data encoding */
 #define ELFDATA2LSB    1                /* 2's complement, little endian */
 #define ELFDATA2MSB    2                /* 2's complement, big endian */
 #define ELFDATANUM     3
+
 #define EI_VERSION     6                /* File version byte index */
                                         /* Value must be EV_CURRENT */
 #define EI_OSABI       7                /* OS ABI identification */
