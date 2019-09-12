@@ -46,6 +46,12 @@
     <Filter Include="Исходные файлы\elf_image\elf_tables\elf_dynamic">
       <UniqueIdentifier>{b148f322-45b9-4f78-840f-439aab227e33}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Исходные файлы\elf_image\elf_tables\elf_note">
+      <UniqueIdentifier>{144ceac4-7f2f-4cac-aac4-84395c991ed2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\elf_image\elf_tables\elf_symbols">
+      <UniqueIdentifier>{6bcd9548-2dae-4c42-8210-99980fd40c3b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -87,6 +93,15 @@
     <ClInclude Include="elf_strings.h">
       <Filter>Исходные файлы\elf_image\elf_tables\elf_strings</Filter>
     </ClInclude>
+    <ClInclude Include="elf_image_full.h">
+      <Filter>Исходные файлы\elf_image</Filter>
+    </ClInclude>
+    <ClInclude Include="elf_notes.h">
+      <Filter>Исходные файлы\elf_image\elf_tables\elf_note</Filter>
+    </ClInclude>
+    <ClInclude Include="elf_symbols.h">
+      <Filter>Исходные файлы\elf_image\elf_tables\elf_symbols</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -118,6 +133,15 @@
     </ClCompile>
     <ClCompile Include="elf_strings.cpp">
       <Filter>Исходные файлы\elf_image\elf_tables\elf_strings</Filter>
+    </ClCompile>
+    <ClCompile Include="elf_image_full.cpp">
+      <Filter>Исходные файлы\elf_image</Filter>
+    </ClCompile>
+    <ClCompile Include="elf_notes.cpp">
+      <Filter>Исходные файлы\elf_image\elf_tables\elf_note</Filter>
+    </ClCompile>
+    <ClCompile Include="elf_symbols.cpp">
+      <Filter>Исходные файлы\elf_image\elf_tables\elf_symbols</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

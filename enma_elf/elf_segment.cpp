@@ -56,7 +56,7 @@ elf_segment& elf_segment::set_p_paddr(uint64_t p_paddr) {
     return *this;
 }
 elf_segment& elf_segment::set_p_filesz(uint64_t p_filesz) {
-    this->segment_data.resize(p_filesz);
+    this->segment_data.resize((size_t)p_filesz);
 
     return *this;
 }

@@ -2,16 +2,23 @@
 #include "elf_image.h"
 
 
-elf_image::elf_image() {
+elf_image::elf_image() 
+ : image_status(elf_image_status_unknown) ,
+    e_type(0), e_machine(0), e_version(0), e_entry(0), 
+    e_phoff(0), e_shoff(0),
+    e_flags(0), 
+    e_ehsize(0), e_phentsize(0), e_phnum(0), 
+    e_shentsize(0), e_shnum(0), e_shstrndx(0) {}
 
-}
 elf_image::elf_image(const elf_image& image) {
     this->operator=(image);
 }
+
 elf_image::elf_image(const uint8_t* raw_image, uint32_t size) {
     clear_image();
     init_from_file(raw_image, size);
 }
+
 elf_image::elf_image(const std::string& file_path) {
     clear_image();
 
@@ -42,10 +49,10 @@ elf_image::elf_image(const std::string& file_path) {
         image_status = elf_image_status_unknown;
     }
 }
+
 elf_image::~elf_image() {
     clear_image();
 }
-
 
 elf_image& elf_image::operator=(const elf_image& image) {
 
@@ -59,6 +66,7 @@ elf_section& elf_image::add_section() {
 
     return *sections.back();
 }
+
 elf_section& elf_image::add_section(const elf32_shdr& hdr) {
 
     elf_section& section = add_section();
@@ -79,6 +87,7 @@ elf_section& elf_image::add_section(const elf32_shdr& hdr) {
 
     return section;
 }
+
 elf_section& elf_image::add_section(const elf64_shdr& hdr) {
 
     elf_section& section = add_section();
@@ -203,14 +212,14 @@ bool init_elf_segments(elf_image& image, const uint8_t* raw_image, size_t raw_si
         segment_idx < image.get_e_phnum();
         segment_idx++, p_segment = (image_format*)((uint8_t*)p_segment + image.get_e_phentsize()) ) {
 
-        if (raw_size < p_segment->p_offset + p_segment->p_filesz) {
+        if (raw_size < encoder(p_segment->p_offset) + encoder(p_segment->p_filesz)) {
             return false;
         }
 
         std::vector<uint8_t> seg_data;
-        seg_data.resize(p_segment->p_filesz);
+        seg_data.resize((size_t)encoder(p_segment->p_filesz));
 
-        memcpy(seg_data.data(), &raw_image[p_segment->p_offset], p_segment->p_filesz);
+        memcpy(seg_data.data(), &raw_image[(size_t)encoder(p_segment->p_offset)], (size_t)encoder(p_segment->p_filesz));
 
         image.add_segment(*p_segment, seg_data);
     }
@@ -226,8 +235,6 @@ bool init_elf_sections(elf_image& image, const uint8_t* raw_image, size_t raw_si
     }
 
     image_format* p_section = (image_format*)& raw_image[image.get_e_shoff()];
-    endian_encoding encoder(image.get_e_ident(EI_DATA));
-
 
     for (size_t section_idx = 0;
         section_idx < image.get_e_shnum();
@@ -294,32 +301,6 @@ void elf_image::init_from_file(const uint8_t* image, size_t size) {
     }
 
 
-    for (auto& section : sections) {
-        cout << std::hex << section->get_sh_name() << "\t"
-            //  << std::hex << section->get_sh_type() << "\t"
-            << std::hex << section->get_sh_flags() << "\t"
-            << std::hex << section->get_sh_addr() << "\t"
-            << std::hex << section->get_sh_offset() << "\t"
-            << std::hex << section->get_sh_link() << "\t"
-            << std::hex << section->get_sh_info() << "\t"
-            << std::hex << section->get_sh_addralign() << "\t"
-            << std::hex << section->get_sh_entsize() << "\t" << endl;
-    }
-
-    cout << endl << endl;
-
-    for (auto& segment : segments) {
-        cout //<< std::hex << segment->get_p_type() << "\t"
-            << std::hex << segment->get_p_offset() << "\t"
-            << std::hex << segment->get_p_vaddr() << "\t"
-            << std::hex << segment->get_p_paddr() << "\t"
-            << std::hex << segment->get_p_filesz() << "\t"
-            << std::hex << segment->get_p_memsz() << "\t"
-            << std::hex << segment->get_p_flags() << "\t"
-            << std::hex << segment->get_p_align() << "\t" << endl;
-    }
-
-   
     image_status = elf_image_status_ok;
 }
 
@@ -454,6 +435,22 @@ uint16_t  elf_image::get_e_shnum() const {
 }
 uint16_t  elf_image::get_e_shstrndx() const {
     return this->e_shstrndx;
+}
+
+std::vector<elf_segment*>& elf_image::get_segments() {
+    return this->segments;
+}
+
+const std::vector<elf_segment*>& elf_image::get_segments() const {
+    return this->segments;
+}
+
+std::vector<elf_section*>& elf_image::get_sections() {
+    return this->sections;
+}
+
+const std::vector<elf_section*>& elf_image::get_sections() const {
+    return this->sections;
 }
 
 void elf_image::clear_image() {

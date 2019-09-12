@@ -82,7 +82,10 @@ public:
     uint16_t  get_e_shnum() const;
     uint16_t  get_e_shstrndx() const;
 
-
+    std::vector<elf_segment*>& get_segments();
+    const std::vector<elf_segment*>& get_segments() const;
+    std::vector<elf_section*>& get_sections();
+    const std::vector<elf_section*>& get_sections() const;
 public://util
     void clear_image();
 };
